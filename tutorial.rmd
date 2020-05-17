@@ -119,6 +119,8 @@ In this section, we begin exploring what our data can tell us using *visualizati
 
 The main reason for exploratory data analysis, or EDA, is to help us find any problems in our data preparation and gain a sense of variable properties, such as central trends (mean), spread (variance), skew, outliers, and relationships between pairs of variables, like their correlation or covariance.
 
+You can read more about EDA at [CMSC 320 EDA Lecture Notes](https://www.hcbravo.org/IntroDataSci/bookdown-notes/exploratory-data-analysis-visualization.html) by Professor Hector Corrado Bravo.
+
 ## Handling Missing Data
 
 Recall that the attribute `availability_365` tells us how many days in the year that this particular listing is available for people to book. 
