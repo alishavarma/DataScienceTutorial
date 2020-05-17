@@ -98,11 +98,19 @@ Attribute | Description/Unit
 
 ## Tidying Data
 
+Tidying Data entails the elements listed in the list below.
 
 Elements of a tidy dataset:
 1. Each observation/entity forms a row
 1. Each variable/attribute forms a column
 1. Each observational unit (type of entity) forms a column (i.e. not dependent on one another)
+
+Our dataset is already tidy and meets the criteria above. Each entity is a row and each attribute is a column, where no entity is dependent on another.
+
+However, if your data set is untidy, below is an example on a different small dataset, to show you what to do.
+
+### Sample Tidying
+
 
 
 # Exploratory Data Analysis
