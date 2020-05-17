@@ -41,22 +41,86 @@ The data we will be using in this tutorial is [_New York City Airbnb Open Data_]
 
 # Preparing Data
 
+Download the [dataset](https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data?select=AB_NYC_2019.csv).
+
+In this section, we will learn how to load in our dataset, view the data in our dataset, and clean it up so it's easy for us to work with.
+
+First, let's load in the following libraries so we can use certain functions:
+```{r, message=FALSE}
+# for data wranging
+library(tidyverse)
+library(dplyr)
+```
+
 ## Loading Data
 
+CSV files are files that include data which are "comma-separated values", meaning that data values are literally separated by commas.
 
+After we've downloaded our CSV file from Kaggle into our working directory, we can use the `read_csv` function to load the CSV file data into our program's data frame, which is a table of the data.
+
+```{r, message=FALSE}
+# create a dataframe from our CSV file
+airbnb_tab <- read.csv("AB_NYC_2019.csv", header=TRUE)
+```
+
+There are some attributes that we don't need for our purposes, like `host_id`, `host_name`, `minimum_nights`, `number_of_reviews`, `last_review`, `reviews_per_month`, and `calculated_host_listings_count`. So, let's remove these from our data frame:
+
+```{r}
+# a vector called "to_remove" that has the names of the attributes we don't want
+to_remove <- c('host_id', 'host_name', 'minimum_nights', 'number_of_reviews', 'last_review', 'reviews_per_month', 'calculated_host_listings_count')
+
+# removing attributes from data frame using "to_remove"
+airbnb_tab = airbnb_tab[ , !(names(airbnb_tab) %in% to_remove)]
+```
 
 ## Viewing Data
 
+Here, we see the first 10 rows in our dataset:
+
+```{r}
+head(airbnb_tab, n=10)
+```
+
+The following is a list of descriptions for the attributes of our data set:
+
+Attribute | Description/Unit
+------------ | -------------
+`id` | Unique ID for each Airbnb listing
+`name` | Name or description of the Airbnb listing
+`neighbourhood_group` | Boroughs of New York (Manhattan, Brooklyn, Queens, Bronx, Staten Island)
+`neighbourhood` | Neighborhoods of New York
+`latitude` | Degrees of latitude, measures distance North and South from Equator
+`longitude` | Degrees of longitude, measure distance East and West of Prime Meridian
+`room_type` | Type of space offered (Entire home/apt, Private room, Shared room)
+`price` | Price of listing, in US Dollars
+`availability_365` | Number of days in a year when the listing is available for booking
 
 
 ## Tidying Data
+
+not really any missing data?
 
 
 
 
 # Exploratory Data Analysis
 
-## Handiling Missing Data
+## Handling Missing Data
+
+Recall that the attribute `availability_365` tells us how many days in the year that this particular listing is available for people to book. 
+
+Notice that 0 is a value for some of the entities (Airbnb listings). It doesn't make much sense for us to look at entities that aren't available at all during the year. In fact, more than 17000 entities are listed at being available for 0 days out of the year! That's about 1/3 of our dataset.
+
+We'll call this "missing data", and remove these entities from our dataset:
+
+```{r}
+
+airbnb_tab <- airbnb_tab %>%
+  filter(availability_365 > 0)
+
+head(airbnb_tab, n=10)
+
+```
 
 
 
