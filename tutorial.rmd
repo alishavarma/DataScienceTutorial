@@ -9,10 +9,33 @@ output: rmdformats::readthedown
 knitr::opts_chunk$set(echo = TRUE)
 ```
 # Introduction
+So you want to be a Data Scientist and don’t know where to start? Well, you’ve come to the right place. 
+
+Today you’ll learn a little about the economy, a whole bunch of data science principles and practice and where to stay on your next trip to New York City!
 
 
-## Data Set Used
+## Data Science Pipeline
+First, let’s look at the data science pipeline. 
 
+The data science pipeline starts with defining what major questions one wants to answer and subsequently **_acquiring and importing the relevant data_** to be analyzed.
+
+Then, the data is viewed and **_data tidying_** must occur; where a rectangular data structure model is assumed and three requirements must be met. Each observation (called an entity) forms a row, each variable (called an attribute) forms a column and each observational unit (type of entity) forms a table.
+
+Leading to the exploratory data analysis process, where the data is transformed and visualized. **_Data cleaning_** may be necessary for missing data. When handling missing data, the missing data may be removed, encoded or imputation (replace missing values with the mean of non-missing values) of a numeric variable may be necessary.
+
+Hypothesis testing and machine learning (ML) modeling are the final steps before the data and its results can be communicated.
+
+![Image of Pipeline]()
+_Source:_https://r4ds.had.co.nz/explore-intro.html
+
+## Economy & Vacations
+The rise of companies like Airbnb has given rise to The Sharing Economy. The sharing economy is a model defined as the facilitation of goods and services on a peer-to-peer level usually through online community platforms. This new model has made it possible for a great deal of people to gain another source of income and for you to have an affordable vacation.
+
+As more sharing economy companies have opened, like Airbinb and Uber, the way we vacation has changed. This change has been documented and open data on it is available.
+
+
+## DataSet Used
+The data we will be using in this tutorial is [_New York City Airbnb Open Data_](http://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data/data) from Kaggle. We will use this data to look at the relationships between types of housing and location.
 
 
 # Preparing Data
@@ -28,6 +51,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Tidying Data
 
 
+
+
 # Exploratory Data Analysis
 
 ## Handiling Missing Data
@@ -38,12 +63,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 
+
 # Hypothesis Testing & Machine Learning
 
 ## Linear Regression
 
 
 ## ML Model
+
 
 
 
