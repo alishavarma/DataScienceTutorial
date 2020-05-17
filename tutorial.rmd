@@ -98,9 +98,11 @@ Attribute | Description/Unit
 
 ## Tidying Data
 
-not really any missing data?
 
-
+Elements of a tidy dataset:
+1. Each observation/entity forms a row
+1. Each variable/attribute forms a column
+1. Each observational unit (type of entity) forms a column (i.e. not dependent on one another)
 
 
 # Exploratory Data Analysis
