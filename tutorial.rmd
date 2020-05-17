@@ -25,7 +25,7 @@ Leading to the exploratory data analysis process, where the data is transformed 
 
 Hypothesis testing and machine learning (ML) modeling are the final steps before the data and its results can be communicated.
 
-![Image of Pipeline]()
+![Image of Pipeline](https://github.com/alishavarma/cmsc320final/blob/master/Data%20Science%20pipeline.png)
 _Source:_https://r4ds.had.co.nz/explore-intro.html
 
 ## Economy & Vacations
