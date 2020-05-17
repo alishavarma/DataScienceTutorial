@@ -115,6 +115,10 @@ However, if your data set is untidy, below is an example on a different small da
 
 # Exploratory Data Analysis
 
+In this section, we begin exploring what our data can tell us using *visualizations*. This will help us to better understand our data and help us make decisions about how we may want to further manipulate the data to see something specific, or decide which methods are best for modelling and Machine Learning!
+
+The main reason for exploratory data analysis, or EDA, is to help us find any problems in our data preparation and gain a sense of variable properties, such as central trends (mean), spread (variance), skew, outliers, and relationships between pairs of variables, like their correlation or covariance.
+
 ## Handling Missing Data
 
 Recall that the attribute `availability_365` tells us how many days in the year that this particular listing is available for people to book. 
