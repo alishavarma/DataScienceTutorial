@@ -26,7 +26,8 @@ Leading to the exploratory data analysis process, where the data is transformed 
 Hypothesis testing and machine learning (ML) modeling are the final steps before the data and its results can be communicated.
 
 ![Image of Pipeline](https://github.com/alishavarma/cmsc320final/blob/master/Data%20Science%20pipeline.png)
-_Source:_https://r4ds.had.co.nz/explore-intro.html
+
+_Source:_ https://r4ds.had.co.nz/explore-intro.html
 
 ## Economy & Vacations
 The rise of companies like Airbnb has given rise to The Sharing Economy. The sharing economy is a model defined as the facilitation of goods and services on a peer-to-peer level usually through online community platforms. This new model has made it possible for a great deal of people to gain another source of income and for you to have an affordable vacation.
