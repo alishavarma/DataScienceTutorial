@@ -1,11 +1,28 @@
 ---
-title: "title"
+title: "Quick Data Science Tutorial To Get You Up To Speed"
 author: "Priyanka Kishore & Alisha Varma"
 date: "5/17/2020"
-output: html_document
+output: rmdformats::readthedown
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Introduction
 
+# Preparing Data
+## Loading Data
+## Viewing Data
+## Tidying Data
+
+# Exploratory Data Analysis
+## Handiling Missing Data
+## Visualizations
+
+# Hypothesis Testing & Machine Learning
+## Linear Regression
+## ML Model
+
+# Conclusion
+
+# References
