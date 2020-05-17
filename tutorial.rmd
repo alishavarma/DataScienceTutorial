@@ -10,6 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # Introduction
 
+## Data Set Used
+
+
+
 # Preparing Data
 
 ## Loading Data
@@ -47,3 +51,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # References
+A thorough R-markdown guide https://bookdown.org/yihui/rmarkdown/
