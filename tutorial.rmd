@@ -159,32 +159,23 @@ nyc_map <- leaflet(airbnb_tab) %>%
 nyc_map
 ```
 
-```{r, message=FALSE}
-getColor <- function(airbnb_tab) {
-  sapply(airbnb_tab$room_type, function(room_type) {
-  if(room_type == 'Entire home/apt') {
-    "green"
-  } else if(room_type =='Private room') {
-    "orange"
-  } else {
-    "red"
-  } })
-}
-
-icons <- awesomeIcons(
-  icon = 'ios-close',
-  iconColor = 'black',
-  library = 'ion',
-  markerColor = getColor(airbnb_tab)
-)
-
-
+```{r}
 leaflet(airbnb_tab) %>% 
   addTiles() %>%
+  
     addAwesomeMarkers(
       lng = ~longitude, 
       lat = ~latitude,
-      icon = icons,
+      icon = awesomeIcons(
+              icon = 'ios-close',
+              iconColor = 'black',
+              library = 'ion',
+              markerColor = ~ifelse(room_type == 'Entire home/apt', "green", 
+                                    ifelse(room_type =='Private room', "orange", 
+                                           "red"
+                                    )
+                            )
+            ),
       
       ## Price Label
       label=~as.character(price),
@@ -193,10 +184,6 @@ leaflet(airbnb_tab) %>%
       clusterOptions = markerClusterOptions()
     )
 ```
-
-
-
-### Scatter Plot
 
 
 ### Histograms
