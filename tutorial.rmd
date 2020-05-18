@@ -157,7 +157,8 @@ airbnb_tab <- airbnb_tab %>%
 knitr::kable(head(airbnb_tab, n=10))
 
 ```
-Note that a way to handle missing data, as mentioned in the data science pipline section (data cleaning), is removing missing data togehter. Having 0 as a value for `availability_365` is form of missing data. 
+
+Note that a way to handle missing data, as mentioned in the data science pipline section (data cleaning), is removing missing data altogether. Having 0 as a value for `availability_365` is a form of missing data. 
 
 
 ## Visualizations
