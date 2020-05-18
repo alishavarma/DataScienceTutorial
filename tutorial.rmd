@@ -143,6 +143,65 @@ head(airbnb_tab, n=10)
 ## Visualizations
 
 
+### Interactive Map
+
+```{r}
+library(leaflet)
+
+# Creating NYC Map
+nyc_map <- leaflet(airbnb_tab) %>%
+  addTiles() %>%
+  setView(
+    lat=40.730610, 
+    lng=-73.935242, 
+    zoom=11)
+
+nyc_map
+```
+
+```{r, message=FALSE}
+getColor <- function(airbnb_tab) {
+  sapply(airbnb_tab$room_type, function(room_type) {
+  if(room_type == 'Entire home/apt') {
+    "green"
+  } else if(room_type =='Private room') {
+    "orange"
+  } else {
+    "red"
+  } })
+}
+
+icons <- awesomeIcons(
+  icon = 'ios-close',
+  iconColor = 'black',
+  library = 'ion',
+  markerColor = getColor(airbnb_tab)
+)
+
+
+leaflet(airbnb_tab) %>% 
+  addTiles() %>%
+    addAwesomeMarkers(
+      lng = ~longitude, 
+      lat = ~latitude,
+      icon = icons,
+      
+      ## Price Label
+      label=~as.character(price),
+    
+      ## Clustering for identifying arrest density
+      clusterOptions = markerClusterOptions()
+    )
+```
+
+
+
+### Scatter Plot
+
+
+### Histograms
+
+
 
 
 # Hypothesis Testing & Machine Learning
