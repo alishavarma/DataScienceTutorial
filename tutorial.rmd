@@ -89,7 +89,7 @@ airbnb_tab = airbnb_tab[ , !(names(airbnb_tab) %in% to_remove)]
 Here, we see the first 10 rows in our dataset:
 
 ```{r}
-knitr::kable(head(airbnb_tab, n=10)[, -2]) # omit `name` attribute for neatness
+knitr::kable(head(airbnb_tab, n=10))
 ```
 
 Some Notes:
@@ -154,7 +154,7 @@ We'll call this "missing data", and remove these entities from our dataset:
 airbnb_tab <- airbnb_tab %>%
   filter(availability_365 > 0) # filter() is used to filter the dataframe via specific conditions
 
-knitr::kable(head(airbnb_tab, n=10)[, -2]) # omit `name` attribute for neatness
+knitr::kable(head(airbnb_tab, n=10))
 
 ```
 Note that a way to handle missing data, as mentioned in the data science pipline section (data cleaning), is removing missing data togehter. Having 0 as a value for `availability_365` is form of missing data. 
@@ -341,7 +341,7 @@ airbnb_tab <- airbnb_tab %>%
                                   distHaversine(c(row$longitude, row$latitude), coordsTimeSquare)
                                 }) / 1609) # divide by 1609 to convert meters to miles
 
-knitr::kable(head(airbnb_tab)[,-2])
+knitr::kable(head(airbnb_tab))
 ```
 
 
@@ -359,9 +359,9 @@ private_tab <- airbnb_tab %>%
 shared_tab <- airbnb_tab %>%
   filter(room_type == "Shared room")
 
-knitr::kable(head(entire_tab)[,-2])
-knitr::kable(head(private_tab)[,-2])
-knitr::kable(head(shared_tab)[,-2])
+knitr::kable(head(entire_tab))
+knitr::kable(head(private_tab))
+knitr::kable(head(shared_tab))
 ```
 
 
