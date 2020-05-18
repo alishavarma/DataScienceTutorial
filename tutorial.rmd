@@ -424,6 +424,3 @@ You can read more about Linear Regression at [CMSC 320 Linear Regression Lecture
 # Conclusion
 
 
-
-# References
-A thorough R-markdown guide https://bookdown.org/yihui/rmarkdown/
