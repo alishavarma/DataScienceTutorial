@@ -121,9 +121,10 @@ Attribute | Description/Unit
 Tidying Data entails the elements listed in the list below.
 
 Elements of a tidy dataset:
+
 1. Each observation/entity forms a row
-1. Each variable/attribute forms a column
-1. Each observational unit (type of entity) forms a column (i.e. not dependent on one another)
+2. Each variable/attribute forms a column
+3. Each observational unit (type of entity) forms a column (i.e. not dependent on one another)
 
 Our dataset is already tidy and meets the criteria above. Each entity is a row and each attribute is a column, where no entity is dependent on another.
 
