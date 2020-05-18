@@ -163,7 +163,6 @@ nyc_map
 ```{r}
 leaflet(airbnb_tab) %>% 
   addTiles() %>%
-  
     addAwesomeMarkers(
       lng = ~longitude, 
       lat = ~latitude,
@@ -183,13 +182,122 @@ leaflet(airbnb_tab) %>%
     
       ## Clustering for identifying arrest density
       clusterOptions = markerClusterOptions()
-    )
+    ) %>%
+  addLegend(
+    position = 'bottomright', 
+    colors= c("green", "orange", "red"), labels=c("Entire Home/Apt", "Private Room", "Shared Room"), 
+    title='Types of Rentals', 
+  )
 ```
 
 
+
 ### Histograms
+```{r, warning=FALSE}
+library(ggplot2)
+library(ggthemes)
+
+airbnb_home <- airbnb_tab %>%
+  filter(room_type == 'Entire home/apt')
+
+knitr::kable(head(airbnb_home, n=10))
+```
 
 
+```{r}
+airbnb_home %>%
+  ggplot(aes(x = neighbourhood_group, y = price)) +
+  geom_boxplot()+
+  coord_flip() +
+  theme_economist() + 
+  scale_fill_economist() +
+  labs(title = "Entire Homes & Appts. Price By Neighborhood in 2019",
+       x = "Major Neighborhood Groups",
+       y = "Price(USD)")
+```
+
+
+```{r, warning = FALSE}
+airbnb_home %>%
+  ggplot(aes(x = neighbourhood_group, y = price)) +
+  geom_boxplot()+
+  scale_y_continuous(limits = c(0, 1500)) +
+  coord_flip() +
+  theme_economist() + 
+  scale_fill_economist() +
+  labs(title = "2019 NYC Homes & Appts. Prices (Up to $1500/night)",
+       x = "Major Neighborhood Groups",
+       y = "Price(USD)")
+```
+
+
+
+```{r}
+airbnb_room <- airbnb_tab %>%
+  filter(room_type == 'Private room')
+
+knitr::kable(head(airbnb_room, n=10))
+```
+```{r}
+airbnb_room %>%
+  ggplot(aes(x = neighbourhood_group, y = price)) +
+  geom_boxplot()+
+  coord_flip() +
+  theme_economist() + 
+  scale_fill_economist() +
+  labs(title = "Private Room Price By Neighborhood in 2019",
+       x = "Major Neighborhood Groups",
+       y = "Price(USD)")
+```
+
+```{r, warning = FALSE}
+airbnb_room %>%
+  ggplot(aes(x = neighbourhood_group, y = price)) +
+  geom_boxplot()+
+  scale_y_continuous(limits = c(0, 500)) +
+  coord_flip() +
+  theme_economist() + 
+  scale_fill_economist() +
+  labs(title = "2019 NYC Private Room Prices (Up to $500/night)",
+       x = "Major Neighborhood Groups",
+       y = "Price(USD)")
+```
+
+
+
+
+```{r}
+airbnb_sroom <- airbnb_tab %>%
+  filter(room_type == 'Shared room')
+
+knitr::kable(head(airbnb_sroom, n=10))
+```
+
+
+```{r}
+airbnb_sroom %>%
+  ggplot(aes(x = neighbourhood_group, y = price)) +
+  geom_boxplot()+
+  coord_flip() +
+  theme_economist() + 
+  scale_fill_economist() +
+  labs(title = "Shared Room Price By Neighborhood in 2019",
+       x = "Major Neighborhood Groups",
+       y = "Price(USD)")
+```
+
+```{r, warning = FALSE}
+airbnb_sroom %>%
+  ggplot(aes(x = neighbourhood_group, y = price)) +
+  geom_boxplot()+
+  scale_y_continuous(limits = c(0, 200)) +
+  coord_flip() +
+  theme_economist() + 
+  scale_fill_economist() +
+  labs(title = "2019 NYC Shared Room Prices (Up to $200/night)",
+       x = "Major Neighborhood Groups",
+       y = "Price(USD)")
+```
 
 
 # Hypothesis Testing & Machine Learning
