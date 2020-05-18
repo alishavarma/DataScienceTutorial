@@ -68,7 +68,13 @@ There are some attributes that we don't need for our purposes, like `host_id`, `
 
 ```{r}
 # a vector called "to_remove" that has the names of the attributes we don't want
-to_remove <- c('host_id', 'host_name', 'minimum_nights', 'number_of_reviews', 'last_review', 'reviews_per_month', 'calculated_host_listings_count')
+to_remove <- c('host_id', 
+              'host_name', 
+               'minimum_nights', 
+               'number_of_reviews', 
+               'last_review', 
+               'reviews_per_month', 
+               'calculated_host_listings_count')
 
 # removing attributes from data frame using "to_remove"
 airbnb_tab = airbnb_tab[ , !(names(airbnb_tab) %in% to_remove)]
@@ -79,7 +85,7 @@ airbnb_tab = airbnb_tab[ , !(names(airbnb_tab) %in% to_remove)]
 Here, we see the first 10 rows in our dataset:
 
 ```{r}
-head(airbnb_tab, n=10)[, -2] # omit `name` attribute for neatness
+knitr::kable(head(airbnb_tab, n=10)[, -2]) # omit `name` attribute for neatness
 ```
 
 The following is a list of descriptions for the attributes of our data set:
@@ -135,7 +141,7 @@ We'll call this "missing data", and remove these entities from our dataset:
 airbnb_tab <- airbnb_tab %>%
   filter(availability_365 > 0)
 
-head(airbnb_tab, n=10)[, -2] # omit `name` attribute for neatness
+knitr::kable(head(airbnb_tab, n=10)[, -2]) # omit `name` attribute for neatness
 
 ```
 
