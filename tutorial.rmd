@@ -1,5 +1,5 @@
 ---
-title: "3 Steps To Become A Data Science Pro"
+title: "3 Steps To Become A Data Scientist"
 author: "Priyanka Kishore & Alisha Varma"
 date: "5/17/2020"
 output: rmdformats::readthedown
