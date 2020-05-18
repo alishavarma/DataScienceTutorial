@@ -322,6 +322,14 @@ airbnb_sroom %>%
 
 # Hypothesis Testing & Machine Learning
 
+**What is Hypothesis Testing?**
+
+Okay, so we have data. But what does it all mean? We need to first interpret our data to make assumptions about it, and test if our assumptions are valid! We refer to an assumption as a "hypothesis". Conducting "hypothesis testing" will help us quantify the validity of our assumptions to certain questions about the data ([Machine Learning Mastery](https://machinelearningmastery.com/statistical-hypothesis-tests/)). To conduct hypothesis testing, we will first plot linear regressions over the distribution of our dataset and generate statistics about the regressions. These statistics will help us answer questions about the data!
+
+**What is Machine Learning?**
+
+idk lol
+
 ## Linear Regression
 
 With datasets that are large, it can be very useful to generate a linear regression, or a line of "best fit", for an easier interpretation of the data. This data analysis technique is also an effective way to learn about general trends of our data set and lets us construct confidence intervals and do hypothesis testing, which analyzes and tests for relationships between variables.
