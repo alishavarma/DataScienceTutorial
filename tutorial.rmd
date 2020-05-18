@@ -91,12 +91,16 @@ Here, we see the first 10 rows in our dataset:
 ```{r}
 knitr::kable(head(airbnb_tab, n=10)[, -2]) # omit `name` attribute for neatness
 ```
-Some Notes:
-* knitr::kable() is used to make the table "pretty" and easier to read
-* head(df, n=10) is used to view the dataframe with a specific number of rows (head() is not always necessary, you can just list the data frame for it to render)
-  * df is where the dataframe goes, in this case airbnb_tab
-  * n= determines the number of rows visible, in this case 1
 
+Some Notes:
+
+* knitr::kable() is used to make the table "pretty" and easier to read
+
+* head(df, n=10) is used to view the dataframe with a specific number of rows (head() is not always necessary, you can just list the data frame for it to render)
+
+* df is where the dataframe goes, in this case airbnb_tab
+
+* n = determines the number of rows visible, in this case 10
 The following is a list of descriptions for the attributes of our data set:
 
 Attribute | Description/Unit
