@@ -50,6 +50,7 @@ First, let's load in the following libraries so we can use certain functions:
 # for data wranging
 library(tidyverse)
 library(dplyr)
+library(geosphere)
 ```
 
 ## Loading Data
@@ -78,7 +79,7 @@ airbnb_tab = airbnb_tab[ , !(names(airbnb_tab) %in% to_remove)]
 Here, we see the first 10 rows in our dataset:
 
 ```{r}
-head(airbnb_tab, n=10)
+head(airbnb_tab, n=10)[, -2] # omit `name` attribute for neatness
 ```
 
 The following is a list of descriptions for the attributes of our data set:
@@ -134,7 +135,7 @@ We'll call this "missing data", and remove these entities from our dataset:
 airbnb_tab <- airbnb_tab %>%
   filter(availability_365 > 0)
 
-head(airbnb_tab, n=10)
+head(airbnb_tab, n=10)[, -2] # omit `name` attribute for neatness
 
 ```
 
