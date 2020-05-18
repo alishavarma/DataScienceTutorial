@@ -132,6 +132,46 @@ However, if your data set is untidy, below is an example on a different small da
 
 ### Sample Tidying
 
+Let's tidy up this small [messy-airlines.csv](messy-airlines.csv) dataset containing data about the arrival status of two airlines across five destinations.
+
+```{r}
+airline_schedule <- read.csv("messy-airlines.csv", header=TRUE)
+knitr::kable(airline_schedule)
+```
+
+Let's **rename** the first 2 columns from "X" to "airline" and "X.1" to "status" in order to clarify what the values are representing:
+```{r}
+airline_schedule = rename(airline_schedule, c("airline"="X", "status"="X.1"))
+knitr::kable(airline_schedule)
+```
+
+Now, notice that there are data values are the headers for the rest of the columns, e.g. Los Angeles, Phoenix, San Diego, San Francisco, and Seattle! We have to make sure that column headers are only variable names that describe the values, otherwise, the dataset is considered "untidy".
+
+1. **Create a new column called "destination" to describe where each airline is heading.** We use the `gather` dplyr function, which takes a set of column names and places them into a single key column, "destination", and collects the cells of those columns into a single value column, "count".
+2. **Make values of "status" attribute as their own attributes.** We do this in order to decrease the number of entries containing the same airline and destination information. We use the `spread` dplyr function, which does the inverse of `gather` by spreading columns, "status" and "count", into separate columns.
+3. **Get rid of the full stop (.) in destination names for readability.** We use the `mutate` function to modify the destination column. We are reassigning all the values in the "destination" column to values without the full stop character in city names, ie. "Los.Angeles" to "Los Angeles". We use the `gsub` function for pattern matching with regular expressions (regex) and replaces all occurrences of the full stop character with a space character.
+4. **Rearrange the entities to sort by destination first, and then airlines.** The `arrange` function helps us with this.
+
+```{r}
+tidy_data <- gather(airline_schedule, "destination", "count", 3:7) %>% # Step 1
+  spread(status, count) %>% # Step 2
+  mutate(destination=gsub("\\.", " ", destination)) %>% # Step 3
+  arrange(destination, airline) # Step 4
+
+knitr::kable(tidy_data)
+```
+
+Now this data is tidy!
+
+Remember to avoid these common problems that is found with messy data:
+
+* column headers are values, not variable names
+* multiple variables stored in one column
+* variables stored in both rows and columns
+* multiple types of observational units are stored in the same table
+* single observational unit stored in multiple tables
+
+You can read more about how to fix these problems at [CMSC 320 Tidying Data Lecture Notes](https://www.hcbravo.org/IntroDataSci/bookdown-notes/tidying-data.html) by Professor Hector Corrada Bravo.
 
 
 # Exploratory Data Analysis
