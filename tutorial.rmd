@@ -50,7 +50,11 @@ First, let's load in the following libraries so we can use certain functions:
 # for data wranging
 library(tidyverse)
 library(dplyr)
+
+# for data analysis
 library(geosphere)
+library(ggplot2)
+library(broom)
 ```
 
 ## Loading Data
@@ -314,6 +318,102 @@ airbnb_sroom %>%
 # Hypothesis Testing & Machine Learning
 
 ## Linear Regression
+
+With datasets that are large, it can be very useful to generate a linear regression, or a line of "best fit", for an easier interpretation of the data. This data analysis technique is also an effective way to learn about general trends of our data set and lets us construct confidence intervals and do hypothesis testing, which analyzes and tests for relationships between variables.
+
+We want to look at the relationship between price and distance away from Times Square in New York City, one of the largest populated cities in New York. We are looking at Time Square since it is a major commercial intersection, tourist destination, entertainment center, and neighborhood in the Midtown Manhattan section of NYC ([Wikipedia](https://en.wikipedia.org/wiki/Times_Square)).
+
+For these reasons, we would like to see if Airbnb listings would increase as their distance to Times Square (latitude 40.757, longitude -73.986) decreases, and vice versa. We will be using functions from the `geosphere` library to calculate distance between coordinates.
+
+
+**First**, let's add an attribute called `distToTimesSquare` in our dataset. This will contain the distance (in miles) between each listing and Times Square.
+```{r}
+
+coordsTimeSquare <- c(-73.986, 40.757)
+
+airbnb_tab <- airbnb_tab %>%
+  mutate(distToTimesSquare = by(airbnb_tab, 1:nrow(airbnb_tab), 
+                                function(row) { 
+                                  distHaversine(c(row$longitude, row$latitude), coordsTimeSquare)
+                                }) / 1609) # divide by 1609 to convert meters to miles
+
+knitr::kable(head(airbnb_tab)[,-2])
+```
+
+
+**Second**, let's split our current `airbnb_tab` data frame into two data frames, one with `room_type == "Entire home/apt"` and one with `room_type == "Private room"`. This is because prices are much more expensive for "Entire home/apt" listings, so we don't want to get confused when regressing against distance. We only want to see the relation between distance and prices, not between prices and size of the space being listed!
+
+```{r}
+# create new dataframe of listings where room_type=="Entire home/apt"
+entire_tab <- airbnb_tab %>%
+  filter(room_type == "Entire home/apt")
+
+# create new dataframe of listings where room_type=="Private room"
+private_tab <- airbnb_tab %>%
+  filter(room_type == "Private room")
+
+shared_tab <- airbnb_tab %>%
+  filter(room_type == "Shared room")
+
+knitr::kable(head(entire_tab)[,-2])
+knitr::kable(head(private_tab)[,-2])
+knitr::kable(head(shared_tab)[,-2])
+```
+
+
+**Third**, we want to create a scatter plot of the prices of listings against their distance to Times Square. We'll also add a regression line to this scatter plot to the general increasing or decreasing trend in our data! Let's do this three times, once for each room_type we are interested in.
+
+```{r, warning=FALSE}
+entire_tab %>%
+    ggplot(aes(x=entire_tab$distToTimesSquare,y=entire_tab$price)) +
+    geom_point() + # plot points for scatter plot
+    geom_smooth(method=lm) + # plot linear regression line or line of best fit
+    ylim(0, 1500) + # set the upper limit of prices to $1500
+    labs(title="Homes & Appts. Prices vs Distance to Times Square", x="Distance to Times Square (miles)", y="Price (USD)")
+
+private_tab %>%
+    ggplot(aes(x=private_tab$distToTimesSquare,y=private_tab$price)) +
+    geom_point() + # plot points for scatter plot
+    geom_smooth(method=lm) + # plot linear regression line or line of best fit
+    ylim(0, 500) + # set the upper limit of prices to $500
+    labs(title="Private Room Prices vs Distance to Times Square", x="Distance to Times Square (miles)", y="Price (USD)")
+
+shared_tab %>%
+    ggplot(aes(x=shared_tab$distToTimesSquare,y=shared_tab$price)) +
+    geom_point() + # plot points for scatter plot
+    geom_smooth(method=lm) + # plot linear regression line or line of best fit
+    ylim(0, 200) + # set the upper limit of prices to $200
+    labs(title="Shared Room Prices vs Distance to Times Square", x="Distance to Times Square (miles)", y="Price (USD)")
+```
+
+**Lastly**, let's analyze the resulting models quantitatively using `broom::tidy`.
+
+```{r}
+entire_fit <- lm(distToTimesSquare~price, data=entire_tab)
+entire_fit %>%
+  tidy()
+
+private_fit <- lm(distToTimesSquare~price, data=private_tab)
+private_fit %>%
+  tidy()
+
+shared_fit <- lm(distToTimesSquare~price, data=shared_tab)
+shared_fit %>%
+  tidy()
+```
+
+As we can see in all three of these linear regression plots, **the prices of all the types of listing decreases slowly as the location of the listing gets further away from Times Square**. From the models, it is clear that prices of Airbnb listings decrease by 0.00149 (homes and apts), 0.00237 (private rooms), and 0.00555 (shared rooms) on average each mile further away from Times Square.
+
+
+Even though we can clearly see a trend in our linear regressions, it is best to conduct **hypothesis testing** in order to determine if our results are valid and there is a significantly meaningful relationship between Airbnb prices and their distance away from high traffic locations, such as Times Square in New York City ([Statistics How To](https://www.statisticshowto.com/probability-and-statistics/hypothesis-testing/)).
+
+Let's ask the question: *Do we reject the null hypothesis of no relationship between price and distance from Times Square?*
+
+Our answer: Yes, we reject the null hypothesis since the p-values for all three linear regressions are significantly smaller than 0.05. A p-value less than or equal to 0.05 means that the results for our data holds, that our data is repeatable, and that our results didn't just happen by chance ([Statistics How To](https://www.statisticshowto.com/probability-and-statistics/hypothesis-testing/)).
+
+
+You can read more about Linear Regression at [CMSC 320 Linear Regression Lecture Notes](https://www.hcbravo.org/IntroDataSci/bookdown-notes/linear-regression.html#simple-regression) by Professor Hector Corrada Bravo.
+
 
 
 ## ML Model
