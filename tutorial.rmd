@@ -204,6 +204,14 @@ Note that a way to handle missing data, as mentioned in the data science pipline
 
 ## Visualizations
 
+_What are data visualizations?_ [Data visualizations](https://www.import.io/post/what-is-data-visualization/) are representations of data and/or information in visual format (like a graph or chart). These visualizations allow for patterns and larger data to be presented and communicated straightforwardly. Data is used to gain insight and is valuable so the way it’s presented is important. Humans are visual, it’s how the brain works!
+
+There are many [different forms of data visualization](https://towardsdatascience.com/10-viz-every-ds-should-know-4e4118f26fc3), each of which have their own advantages. 
+
+The types of data to be analyzed (categorical and/or numeric) is an important factor in deciding what data visualization is applicable and pertinent. 
+
+Want to know more about picking the best data visualization for your message, [click here](https://www.datapine.com/blog/how-to-choose-the-right-data-visualization-types/).
+
 
 ### Interactive Map
 
@@ -365,11 +373,15 @@ airbnb_sroom %>%
 
 **What is Hypothesis Testing?**
 
-Okay, so we have data. But what does it all mean? We need to first interpret our data to make assumptions about it, and test if our assumptions are valid! We refer to an assumption as a "hypothesis". Conducting "hypothesis testing" will help us quantify the validity of our assumptions to certain questions about the data ([Machine Learning Mastery](https://machinelearningmastery.com/statistical-hypothesis-tests/)). To conduct hypothesis testing, we will first plot linear regressions over the distribution of our dataset and generate statistics about the regressions. These statistics will help us answer questions about the data!
+Okay, so we have data. But what does it all mean? We need to first interpret our data to make assumptions about it, and test if our assumptions are valid! We refer to an assumption as a "hypothesis". Conducting "hypothesis testing" will help us quantify the validity of our assumptions to certain questions about the data ([Machine Learning Mastery](https://machinelearningmastery.com/statistical-hypothesis-tests/)). 
+
+To conduct hypothesis testing, we will first plot linear regressions over the distribution of our dataset and generate statistics about the regressions. These statistics will help us answer questions about the data!
 
 **What is Machine Learning?**
 
-idk lol
+We’ve all heard of it, but what is it really? Machine learning uses algorithms and statistics in order to find patterns in substantial amounts of data (meaning anything that can be digitally stored). In machine learning, a model is created using mathematical and statistical functions that are able to be modified ([either manually or automatically, dependent on the type of ML](https://www.zdnet.com/article/what-is-machine-learning-everything-you-need-to-know/)) till it can make accurate predictions with new data.
+
+The patterns found are usually used for recommendation systems in many of [today’s technologies](https://builtin.com/artificial-intelligence/machine-learning-examples-applications).
 
 ## Linear Regression
 
