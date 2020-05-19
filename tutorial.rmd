@@ -500,10 +500,10 @@ For these reasons, we would like to see if Airbnb listings would increase as the
 **First**, let's add an attribute called `distToTimesSquare` in our dataset. This will contain the distance (in miles) between each listing and Times Square.
 ```{r}
 
-coordsTimeSquare <- c(-73.986, 40.757)
+coordsTimeSquare <- c(-73.986, 40.757) # vector of Times Square coordinates, first longitude, second latitude
 
 airbnb_tab <- airbnb_tab %>%
-  mutate(distToTimesSquare = by(airbnb_tab, 1:nrow(airbnb_tab), 
+  mutate(distToTimesSquare = by(airbnb_tab, 1:nrow(airbnb_tab), # calculate distance using distHaversine function
                                 function(row) { 
                                   distHaversine(c(row$longitude, row$latitude), coordsTimeSquare)
                                 }) / 1609) # divide by 1609 to convert meters to miles
@@ -523,6 +523,7 @@ entire_tab <- airbnb_tab %>%
 private_tab <- airbnb_tab %>%
   filter(room_type == "Private room")
 
+# create new dataframe of listings where room_type=="Shared room"
 shared_tab <- airbnb_tab %>%
   filter(room_type == "Shared room")
 
@@ -560,17 +561,17 @@ shared_tab %>%
 **Lastly**, let's analyze the resulting models quantitatively using `broom::tidy`.
 
 ```{r}
-entire_fit <- lm(distToTimesSquare~price, data=entire_tab)
+entire_fit <- lm(distToTimesSquare~price, data=entire_tab) # create the simple regression model
 entire_fit %>%
-  tidy()
+  tidy() # turn model into a tibble with information about the model
 
-private_fit <- lm(distToTimesSquare~price, data=private_tab)
+private_fit <- lm(distToTimesSquare~price, data=private_tab) # create the simple regression model
 private_fit %>%
-  tidy()
+  tidy() # turn model into a tibble with information about the model
 
-shared_fit <- lm(distToTimesSquare~price, data=shared_tab)
+shared_fit <- lm(distToTimesSquare~price, data=shared_tab) # create the simple regression model
 shared_fit %>%
-  tidy()
+  tidy() # turn model into a tibble with information about the model
 ```
 
 As we can see in all three of these linear regression plots, **the prices of all the types of listing decreases slowly as the location of the listing gets further away from Times Square**. From the models, it is clear that prices of Airbnb listings decrease by 0.00149 (homes and apts), 0.00237 (private rooms), and 0.00555 (shared rooms) on average each mile further away from Times Square.
