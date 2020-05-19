@@ -32,7 +32,7 @@ _Source:_ https://r4ds.had.co.nz/explore-intro.html
 ## Economy & Vacations
 The rise of companies like Airbnb has given rise to The Sharing Economy. The sharing economy is a model defined as the facilitation of goods and services on a peer-to-peer level usually through online community platforms. This new model has made it possible for a great deal of people to gain another source of income and for you to have an affordable vacation.
 
-As more sharing economy companies have opened, like Airbinb and Uber, the way we vacation has changed. This change has been documented and open data on it is available.
+As more [sharing economy companies have opened, like Airbinb and Uber](https://www.forbes.com/sites/tomiogeron/2013/01/23/airbnb-and-the-unstoppable-rise-of-the-share-economy/#40e7cf76aae3), the way we vacation has changed. This change has been documented and open data on it is available.
 
 
 ## DataSet Used
