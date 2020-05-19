@@ -594,4 +594,13 @@ You can read more about Linear Regression at [CMSC 320 Linear Regression Lecture
 
 # Conclusion
 
+Through this dataset of 2019 Airbnb listings in New York City, we can conclude that the distance between a listed Airbnb and a highly populated location, such as Times Square in NYC, is negatively correlated to the listing’s price per night. We saw this through linear regressions and conducting hypothesis tests!
 
+We also saw the price range of listings vary greatly in the five boroughs of NYC (independent of room type) and that room type is directly related to the median pricing listing of rooms in different boroughs in NYC.
+
+In this tutorial, we only have scraped the surface of what we can do with data sets using techniques frequently found in the field of data science. There is so much more to learn! We encourage you to visit the references throughout this tutorial to learn more, and to download and mess with different data sets. You can find data from tjese various repositories and more:
+
+* [Kaggle Datasets](https://www.kaggle.com/datasets)
+* [US Government’s Open Data](https://www.data.gov/)
+* [World Health Organization](https://www.who.int/gho/database/en/)
+* [Scientific Data Repositories](https://www.nature.com/sdata/policies/repositories)
