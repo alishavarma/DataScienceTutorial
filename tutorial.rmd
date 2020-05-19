@@ -9,13 +9,12 @@ output: rmdformats::readthedown
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-![New York](https://hanyc.org/wp-content/uploads/2017/08/Homepage-banner2-SR.jpg)
-
 # Introduction
 So you want to be a Data Scientist and don’t know where to start? Well, you’ve come to the right place. 
 
 Today you’ll learn a little about the economy, a whole bunch of data science principles and practice and where to stay on your next trip to New York City!
 
+![New York](https://hanyc.org/wp-content/uploads/2017/08/Homepage-banner2-SR.jpg)
 
 ## Data Science Pipeline
 First, let’s look at the data science pipeline. 
