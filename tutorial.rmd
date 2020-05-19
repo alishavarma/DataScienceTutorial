@@ -497,7 +497,7 @@ To conduct hypothesis testing, we will first plot linear regressions over the di
 
 We’ve all heard of it, but what is it really? Machine learning uses algorithms and statistics in order to find patterns in substantial amounts of data (meaning anything that can be digitally stored). In machine learning, a model is created using mathematical and statistical functions that are able to be modified ([either manually or automatically, dependent on the type of ML](https://www.zdnet.com/article/what-is-machine-learning-everything-you-need-to-know/)) till it can make accurate predictions with new data.
 
-Linear and logistic regressions are both machine learning algorithims, one based on supervised regression and the other is based on supervised classification, repspectively.
+Linear and logistic regressions are both machine learning algorithms, one based on supervised regression and the other is based on supervised classification, respectively.
 
 The patterns found are usually used for recommendation systems in many of [today’s technologies](https://builtin.com/artificial-intelligence/machine-learning-examples-applications).
 
@@ -612,3 +612,22 @@ In this tutorial, we only have scraped the surface of what we can do with data s
 * [US Government’s Open Data](https://www.data.gov/)
 * [World Health Organization](https://www.who.int/gho/database/en/)
 * [Scientific Data Repositories](https://www.nature.com/sdata/policies/repositories)
+
+
+# References
+
+[CMSC 320 Lecture Notes by Hector Corrada Bravo](https://www.hcbravo.org/IntroDataSci/bookdown-notes/)
+
+[Airbnb And The Unstoppable Rise of the Share Economy](https://www.forbes.com/sites/tomiogeron/2013/01/23/airbnb-and-the-unstoppable-rise-of-the-share-economy/#40e7cf76aae3)
+
+[What is Data Visualization and Why is it Important?](https://www.import.io/post/what-is-data-visualization/)
+
+[10 Visualizations Every Data Scientist Should Know](https://towardsdatascience.com/10-viz-every-ds-should-know-4e4118f26fc3)
+
+[How to Choose the Right Data Visualization Types](https://www.datapine.com/blog/how-to-choose-the-right-data-visualization-types/)
+
+[16 Captivating Data Visualization Examples](https://blog.hubspot.com/marketing/great-data-visualization-examples)
+
+[Hypothesis Testing](https://www.statisticshowto.com/probability-and-statistics/hypothesis-testing/)
+
+[15 Machine Learning Examples](https://builtin.com/artificial-intelligence/machine-learning-examples-applications)
