@@ -216,44 +216,51 @@ Want to know more about picking the best data visualization for your message, [c
 ### Interactive Map
 
 ```{r}
+# Download necessary library to integrate and control maps
 library(leaflet)
 
 # Creating NYC Map
 nyc_map <- leaflet(airbnb_tab) %>%
   addTiles() %>%
   setView(
-    lat=40.730610, 
-    lng=-73.935242, 
+    lat=40.730610, #set latitude
+    lng=-73.935242, #set longitude
     zoom=11)
 
-nyc_map
+nyc_map #outputs the map
 ```
 
 ```{r}
-leaflet(airbnb_tab) %>% 
+leaflet(airbnb_tab) %>% #pass in 
   addTiles() %>%
     addAwesomeMarkers(
-      lng = ~longitude, 
+      #pass in given longitude of entity
+      lng = ~longitude,
+      
+      #pass in given latitude of entity
       lat = ~latitude,
+      
+      # Setting up icon for entity on map
       icon = awesomeIcons(
               icon = 'ios-close',
               iconColor = 'black',
               library = 'ion',
+              # Determines color of the icon on map with nested if else statements
               markerColor = ~ifelse(room_type == 'Entire home/apt', "green", 
                                     ifelse(room_type =='Private room', "orange", 
                                            "red"
                                     )
                             )
             ),
-      
-      ## Price Label
+      # Price Label
       label=~as.character(price),
     
-      ## Clustering for identifying arrest density
+      # Clustering for identifying arrest density
       clusterOptions = markerClusterOptions()
     ) %>%
   addLegend(
     position = 'bottomright', 
+    # Color keys correspond to values, respectively
     colors= c("green", "orange", "red"), labels=c("Entire Home/Apt", "Private Room", "Shared Room"), 
     title='Types of Rentals', 
   )
@@ -262,24 +269,33 @@ leaflet(airbnb_tab) %>%
 
 
 ### Histograms
-```{r, warning=FALSE}
-library(ggplot2)
-library(ggthemes)
 
+
+```{r, warning=FALSE}
+# Download subsequent libraries
+library(ggplot2)  #data visualization package for the statistical programming
+library(ggthemes) #package for themes
+
+# Filter out all the Enitre home/appt listings into new dataframe
 airbnb_home <- airbnb_tab %>%
   filter(room_type == 'Entire home/apt')
 
+# View new table
 knitr::kable(head(airbnb_home, n=10))
 ```
 
-
 ```{r}
-airbnb_home %>%
+airbnb_home %>%   #send in dataframe
+  # Setting up what data is used from the dataframe
   ggplot(aes(x = neighbourhood_group, y = price)) +
-  geom_boxplot()+
-  coord_flip() +
+  geom_boxplot()+   #creating a boxplot
+  coord_flip() +    #flipping the coordinates to have horizontal view
+  
+  # Themes for graph
   theme_economist() + 
   scale_fill_economist() +
+  
+  # Setting up title and axis labels
   labs(title = "Entire Homes & Appts. Price By Neighborhood in 2019",
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
@@ -287,13 +303,22 @@ airbnb_home %>%
 
 
 ```{r, warning = FALSE}
-airbnb_home %>%
+airbnb_home %>%   #send in dataframe
+  # Setting up what data is used from the dataframe
   ggplot(aes(x = neighbourhood_group, y = price)) +
-  geom_boxplot()+
+  
+  geom_boxplot()+   #creating a boxplot
+  
+  # Limiting the y-axis to get a better view of data
   scale_y_continuous(limits = c(0, 1500)) +
-  coord_flip() +
+  
+  coord_flip() +  #flipping the coordinates to have horizontal view
+  
+  # Themes for graph
   theme_economist() + 
   scale_fill_economist() +
+  
+  # Setting up title and axis labels
   labs(title = "2019 NYC Homes & Appts. Prices (Up to $1500/night)",
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
@@ -302,31 +327,47 @@ airbnb_home %>%
 
 
 ```{r}
+# Filter out all the Private room listings into new dataframe
 airbnb_room <- airbnb_tab %>%
   filter(room_type == 'Private room')
 
+# View new table
 knitr::kable(head(airbnb_room, n=10))
 ```
 ```{r}
-airbnb_room %>%
+airbnb_room %>%   #send in dataframe
+  # Setting up what data is used from the dataframe
   ggplot(aes(x = neighbourhood_group, y = price)) +
-  geom_boxplot()+
-  coord_flip() +
+  geom_boxplot()+   #creating a boxplot
+  coord_flip() +    #flipping the coordinates to have horizontal view
+  
+  # Themes for graph
   theme_economist() + 
   scale_fill_economist() +
+  
+  # Setting up title and axis labels
   labs(title = "Private Room Price By Neighborhood in 2019",
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
 ```
 
 ```{r, warning = FALSE}
-airbnb_room %>%
+airbnb_room %>%   #send in dataframe
+  # Setting up what data is used from the dataframe
   ggplot(aes(x = neighbourhood_group, y = price)) +
-  geom_boxplot()+
+  
+  geom_boxplot()+   #creating a boxplot
+  
+  # Limiting the y-axis to get a better view of data
   scale_y_continuous(limits = c(0, 500)) +
-  coord_flip() +
+  
+  coord_flip() +    #flipping the coordinates to have horizontal view
+  
+  # Themes for graph
   theme_economist() + 
   scale_fill_economist() +
+  
+  # Setting up title and axis labels
   labs(title = "2019 NYC Private Room Prices (Up to $500/night)",
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
@@ -336,33 +377,49 @@ airbnb_room %>%
 
 
 ```{r}
+# Filter out all the Shared room listings into new dataframe
 airbnb_sroom <- airbnb_tab %>%
   filter(room_type == 'Shared room')
 
+# View new table
 knitr::kable(head(airbnb_sroom, n=10))
 ```
 
 
 ```{r}
-airbnb_sroom %>%
+airbnb_sroom %>%   #send in dataframe
+  # Setting up what data is used from the dataframe
   ggplot(aes(x = neighbourhood_group, y = price)) +
-  geom_boxplot()+
-  coord_flip() +
+  geom_boxplot()+   #creating a boxplot
+  coord_flip() +    #flipping the coordinates to have horizontal view
+  
+  # Themes for graph
   theme_economist() + 
   scale_fill_economist() +
+  
+  # Setting up title and axis labels
   labs(title = "Shared Room Price By Neighborhood in 2019",
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
 ```
 
 ```{r, warning = FALSE}
-airbnb_sroom %>%
+airbnb_sroom %>%  #send in dataframe
+  # Setting up what data is used from the dataframe
   ggplot(aes(x = neighbourhood_group, y = price)) +
-  geom_boxplot()+
+  
+  geom_boxplot()+   #creating a boxplot
+  
+  # Limiting the y-axis to get a better view of data
   scale_y_continuous(limits = c(0, 200)) +
-  coord_flip() +
+  
+  coord_flip() +   #flipping the coordinates to have horizontal view
+  
+  # Themes for graph
   theme_economist() + 
   scale_fill_economist() +
+  
+  # Setting up title and axis labels
   labs(title = "2019 NYC Shared Room Prices (Up to $200/night)",
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
