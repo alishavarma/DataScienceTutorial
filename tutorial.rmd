@@ -34,7 +34,7 @@ _Source:_ https://r4ds.had.co.nz/explore-intro.html
 ## Economy & Vacations
 The rise of companies like Airbnb has given rise to The Sharing Economy. The sharing economy is a model defined as the facilitation of goods and services on a peer-to-peer level usually through online community platforms. This new model has made it possible for a great deal of people to gain another source of income and for you to have an affordable vacation.
 
-As more [sharing economy companies have opened, like Airbinb and Uber](https://www.forbes.com/sites/tomiogeron/2013/01/23/airbnb-and-the-unstoppable-rise-of-the-share-economy/#40e7cf76aae3), the way we vacation has changed. This change has been documented and open data on it is available.
+As more [sharing economy companies have opened, like Airbnb and Uber](https://www.forbes.com/sites/tomiogeron/2013/01/23/airbnb-and-the-unstoppable-rise-of-the-share-economy/#40e7cf76aae3), the way we vacation has changed. This change has been documented and open data on it is available.
 
 
 ## DataSet Used
@@ -96,13 +96,15 @@ knitr::kable(head(airbnb_tab, n=10))
 
 Some Notes:
 
-* knitr::kable() is used to make the table "pretty" and easier to read
+* `knitr::kable()` is used to make the table "pretty" and easier to read
 
-* head(df, n=10) is used to view the dataframe with a specific number of rows (head() is not always necessary, you can just list the data frame for it to render)
+* `head(df, n=10)` is used to view the dataframe with a specific number of rows (head() is not always necessary, you can just list the data frame for it to render)
 
-* df is where the dataframe goes, in this case airbnb_tab
+* the first argument is where the dataframe goes, in this case, `airbnb_tab`
 
-* n = determines the number of rows visible, in this case 10
+* n = determines the number of rows visible, in this case, 10
+
+
 The following is a list of descriptions for the attributes of our data set:
 
 Attribute | Description/Unit
@@ -137,7 +139,7 @@ However, if your data set is untidy, below is an example on a different small da
 Let's tidy up this small [messy-airlines.csv](messy-airlines.csv) dataset containing data about the arrival status of two airlines across five destinations.
 
 ```{r}
-airline_schedule <- read.csv("messy-airlines.csv", header=TRUE)
+airline_schedule <- read.csv("messy-airlines.csv", header=TRUE) # read downloaded CSV file into a dataframe (array of data)
 knitr::kable(airline_schedule)
 ```
 
@@ -217,7 +219,7 @@ Want to know more about picking the best data visualization for your message, [c
 
 ### Interactive Map
 
-Another layer of data visulizations is the addition of interactions. Interactive data visulizations add more functionality and allow the users to learn more about the massive amounts of data presented and the data its relationship relative to itself.
+Another layer of data visualizations is the addition of interactions. Interactive data visulizations add more functionality and allow the users to learn more about the massive amounts of data presented and the data its relationship relative to itself.
 
 There are many types of interactive data visualizations and each type has there own benefits. [Here](https://blog.hubspot.com/marketing/great-data-visualization-examples) are some examples of captivating visualizations and how they are effective.
 
@@ -237,7 +239,9 @@ nyc_map <- leaflet(airbnb_tab) %>%
 nyc_map #outputs the map
 ```
 
-Now we will add our data via location icons. The latitude and longitude coordinate for each listing will be used for icon placement on the map.
+
+Now, let's add our data via location icons. The latitude and longitude coordinate for each listing will be used for icon placement on the map.
+
 ```{r}
 leaflet(airbnb_tab) %>% #pass in 
   addTiles() %>%
@@ -274,11 +278,11 @@ leaflet(airbnb_tab) %>% #pass in
   )
 ```
 
-The icon color is dependent on the `room_type` attribute that has three categories; enitre home or appt. is green, private rooms are orange and shared rooms are red. Another functionality is that the icons have labels when they are hovered over, the labels contain the price of the listing as to contribute to the ease of viewing and comparing listings. 
+* The icon color is dependent on the `room_type` attribute that has three categories; enitre home or appt. is green, private rooms are orange and shared rooms are red. Another functionality is that the icons have labels when they are hovered over, the labels contain the price of the listing as to contribute to the ease of viewing and comparing listings. 
 
-The map contains a legend so that the user knows how to interpret the map's colors.
+* The map contains a legend so that the user knows how to interpret the map's colors.
 
-A clustering function was added and can be omitted, it was just added for density analysis based on coordinates of listing on the map.
+* A clustering function was added and can be omitted, it was just added for density analysis based on coordinates of listing on the map.
 
 This map could help you plan your next trip to NYC and save money just by staying across the street. Who knew!
 
@@ -290,13 +294,14 @@ Boxplots, although simple, are very useful to view the relationship of numeric v
 Here we look at the complete range listing prices based on the `room_type` attribute in the dataset. We will split up the listing and look at them subsequently to see how their ranges compare to one another.
 
 The three step process is:
+
 1. Filter the data into a new dataframe based on the room type
-1. Graph the data via a boxplot
-1. Section off the y-axis range of the boxplot _to create an effective and interpretable visulization_
+2. Graph the data via a boxplot
+3. Section off the y-axis range of the boxplot _to create an effective and interpretable visulization_
 
 _Purpose:_ We want to see the listing's price ranges of places based on neighborhood groups, to see how they compare to one another. (We will separate the data by room type, as the price for an entire house versus a shared room on the same street will vary greatly.)
 
-**_First_, lets graph the Entire home/appt. room type***
+**_First_, let's graph the Entire home/appt. room type.**
 
 We filter the data.
 ```{r, warning=FALSE}
@@ -312,7 +317,7 @@ airbnb_home <- airbnb_tab %>%
 knitr::kable(head(airbnb_home, n=10))
 ```
 
-Now we create a boxplot to see the range.
+Now, we create a boxplot to see the range:
 ```{r}
 airbnb_home %>%   #send in dataframe
   # Setting up what data is used from the dataframe
@@ -355,14 +360,15 @@ airbnb_home %>%   #send in dataframe
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
 ```
-Here we have it. A visualization that shows the price ranges of listing of entire homes and apartments, by neighboorhood groups. 
 
-Let's hope your not getting ripped off.
+Here we have it! A visualization that shows the price ranges of listing of entire homes and apartments, by neighboorhood groups. 
+
+Let's hope you're not getting ripped off.
 
 
-**_Second_, lets graph the Private room type***
+**_Second_, let's graph the Private room type.**
 
-We filter the data, again, into a new dataframe.
+We filter the data, again, into a new dataframe:
 ```{r}
 # Filter out all the Private room listings into new dataframe
 airbnb_room <- airbnb_tab %>%
@@ -372,7 +378,7 @@ airbnb_room <- airbnb_tab %>%
 knitr::kable(head(airbnb_room, n=10))
 ```
 
-Again, we create a boxplot to see the range.
+Again, we create a boxplot to see the range:
 ```{r}
 airbnb_room %>%   #send in dataframe
   # Setting up what data is used from the dataframe
@@ -389,6 +395,7 @@ airbnb_room %>%   #send in dataframe
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
 ```
+
 These boxplots are ineffective as well.
 
 So this time, we pull in the range of y, even more and reduce it down to 500 dollars, as private rooms usually cost much less per night than entire homes.
@@ -413,14 +420,15 @@ airbnb_room %>%   #send in dataframe
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
 ```
+
 Now this graph is much more effective than the previous one.
 
 We're almost done, just one more to go.
 
 
-**_Lastly_, lets graph the Shared room type***
+**_Lastly_, lets graph the Shared room type**
 
-We filter the data for the last time.
+We filter the data for the last time:
 ```{r}
 # Filter out all the Shared room listings into new dataframe
 airbnb_sroom <- airbnb_tab %>%
@@ -430,7 +438,7 @@ airbnb_sroom <- airbnb_tab %>%
 knitr::kable(head(airbnb_sroom, n=10))
 ```
 
-Again, we create a boxplot to see the range.
+Again, we create a boxplot to see the range:
 ```{r}
 airbnb_sroom %>%   #send in dataframe
   # Setting up what data is used from the dataframe
@@ -448,7 +456,7 @@ airbnb_sroom %>%   #send in dataframe
        y = "Price(USD)")
 ```
 
-And again the y-axis values need to be trimmed. This time we will tirm it down to $200.
+And again the y-axis values need to be trimmed. This time we will trim it down to $200.
 ```{r, warning = FALSE}
 airbnb_sroom %>%  #send in dataframe
   # Setting up what data is used from the dataframe
@@ -470,7 +478,8 @@ airbnb_sroom %>%  #send in dataframe
        x = "Major Neighborhood Groups",
        y = "Price(USD)")
 ```
-We're all done now. So what have we learned?
+
+We're all done now. *So what have we learned?*
 
 We learned that Manhattan has the pricest listing independent of the room type of the listing. What other conclusions can we make from these visualizations?
 
