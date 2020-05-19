@@ -497,6 +497,8 @@ To conduct hypothesis testing, we will first plot linear regressions over the di
 
 We’ve all heard of it, but what is it really? Machine learning uses algorithms and statistics in order to find patterns in substantial amounts of data (meaning anything that can be digitally stored). In machine learning, a model is created using mathematical and statistical functions that are able to be modified ([either manually or automatically, dependent on the type of ML](https://www.zdnet.com/article/what-is-machine-learning-everything-you-need-to-know/)) till it can make accurate predictions with new data.
 
+Linear and logistic regressions are both machine learning algorithims, one based on supervised regression and the other is based on supervised classification, repspectively.
+
 The patterns found are usually used for recommendation systems in many of [today’s technologies](https://builtin.com/artificial-intelligence/machine-learning-examples-applications).
 
 ## Linear Regression
@@ -599,7 +601,7 @@ You can read more about Linear Regression at [CMSC 320 Linear Regression Lecture
 
 
 
-## ML Model
+## Logistic Regression
 
 
 
