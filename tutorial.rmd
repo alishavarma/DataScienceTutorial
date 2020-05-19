@@ -259,7 +259,7 @@ leaflet(airbnb_tab) %>% #pass in
                             )
             ),
       # Price Label
-      label=~as.character(price),
+      label = ~paste("$", as.character(price), "per night"),
     
       # Clustering for identifying arrest density
       clusterOptions = markerClusterOptions()
