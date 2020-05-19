@@ -501,7 +501,7 @@ Linear and logistic regressions are both machine learning algorithims, one based
 
 The patterns found are usually used for recommendation systems in many of [today’s technologies](https://builtin.com/artificial-intelligence/machine-learning-examples-applications).
 
-## Linear Regression
+## ML & Hypothesis Testing Walk Through
 
 With datasets that are large, it can be very useful to generate a linear regression, or a line of "best fit", for an easier interpretation of the data. This data analysis technique is also an effective way to learn about general trends of our data set and lets us construct confidence intervals and do hypothesis testing, which analyzes and tests for relationships between variables.
 
@@ -598,12 +598,6 @@ Our answer: Yes, we reject the null hypothesis since the p-values for all three 
 
 
 You can read more about Linear Regression at [CMSC 320 Linear Regression Lecture Notes](https://www.hcbravo.org/IntroDataSci/bookdown-notes/linear-regression.html#simple-regression) by Professor Hector Corrada Bravo.
-
-
-
-## Logistic Regression
-
-
 
 
 # Conclusion
